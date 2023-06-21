@@ -9,6 +9,9 @@ const Ssg = ({ data }: SsgType) => {
   return (
     <div>
       <h1>ssg 페이지</h1>
+      {data.map((item: any, i: any) => (
+        <div key={i}>{item.id} {item.title}</div>
+      ))}
     </div>
   )
 }

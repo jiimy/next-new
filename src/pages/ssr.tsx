@@ -1,16 +1,16 @@
 import { ROOT_API } from '@/constants/api';
 import React from 'react'
 
-type SsgType = {
+type SsrType = {
   data?: any
 }
 
-const Isr = ({ data }: SsgType) => {
+const Ssr = ({ data }: SsrType) => {
   return (
     <div>
-      <h1>isr 페이지</h1>
+      <h1>ssr 페이지</h1>
       <div>
-        {data.map((item: any, i: any) => (
+        {data.map((item: any, i:any) => (
           <div key={i}>{item.id} {item.title}</div>
         ))}
       </div>
@@ -18,16 +18,15 @@ const Isr = ({ data }: SsgType) => {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await fetch(`${ROOT_API}/todos`);
   const data = await res.json();
 
   return {
     props: {
       data,
-    },
-    revalidate: 60,
+    }
   }
 }
 
-export default Isr
+export default Ssr

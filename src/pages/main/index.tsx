@@ -1,9 +1,9 @@
 import React from 'react'
 import axios from 'axios';
 import { useQuery, QueryClient, dehydrate } from '@tanstack/react-query';
-import { ROOT_API } from '@/constants/api';
-import TodoLIst from '@/components/todolist/TodoLIst';
 import { GetStaticProps } from 'next';
+import TodoList from '@/components/todolist/TodoLIst';
+import { ROOT_API } from '@/constants/api';
 
 export async function getBoardList() {
   const { data } = await axios.get(`${ROOT_API}/todos`);
@@ -45,7 +45,7 @@ const Main = () => {
     <div>
       메인
       <button>post</button>
-      <TodoLIst data={data} />
+      <TodoList data={data} />
     </div>
   )
 }
