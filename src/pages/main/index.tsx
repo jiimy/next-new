@@ -14,7 +14,7 @@ const Main = () => {
     queryFn: getBoardList,
   });
 
-  console.log('dd', data);
+  console.log('dd1', data);
 
   return (
     <div>
