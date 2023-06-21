@@ -1,11 +1,14 @@
 import { ROOT_API } from '@/constants/api';
-import React from 'react'
+import { useQuery, QueryClient, dehydrate } from '@tanstack/react-query';
+import axios from 'axios';
+
 
 type SsgType = {
   data?: any
 }
 
-const Isr = ({ data }: SsgType) => {
+const Isr = () => {
+  const { data } = useQuery(['posts'], getBoardList)
   return (
     <div>
       <h1>isr 페이지</h1>
@@ -18,16 +21,22 @@ const Isr = ({ data }: SsgType) => {
   )
 }
 
+export async function getBoardList() {
+  const { data } = await axios.get(`${ROOT_API}/todos`);
+  return data;
+}
+
 export async function getStaticProps() {
-  const res = await fetch(`${ROOT_API}/todos`);
-  const data = await res.json();
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery(['todos'], getBoardList);
 
   return {
     props: {
-      data,
+      dehydratedState: dehydrate(queryClient),
     },
-    revalidate: 60,
-  }
+    revalidate: 30,
+  };
 }
 
 export default Isr
