@@ -1,25 +1,51 @@
 import React from 'react'
 import axios from 'axios';
-import { useQuery } from '@tanstack/react-query';
-// import { useQuery } from "";
+import { useQuery, QueryClient, dehydrate } from '@tanstack/react-query';
+import { ROOT_API } from '@/constants/api';
+import TodoLIst from '@/components/todolist/TodoLIst';
+import { GetStaticProps } from 'next';
+
+export async function getBoardList() {
+  const { data } = await axios.get(`${ROOT_API}/todos`);
+  return data;
+}
+
+// export async function getStaticProps() {
+export async function getStaticProps() {
+  // const queryClient = new QueryClient()
+  // await queryClient.prefetchQuery(['posts'], getBoardList)
+  // return {
+  //   props: {
+  //     dehydratedState: dehydrate(queryClient),
+  //   },
+  // }
+  const posts = await getBoardList()
+  return {
+    props: { posts },
+    revalidate: 1, // In seconds
+  }
+}
+
+// export async function loader() {
+//   const queryClient = new QueryClient()
+//   await queryClient.prefetchQuery(['posts'], getBoardList)
+//   return json({ dehydratedState: dehydrate(queryClient) })
+// }
 
 const Main = () => {
-  async function getBoardList() {
-    const { data } = await axios.get(`https://64927c19428c3d2035d02a9d.mockapi.io/api/todo`);
-    return data;
-  }
-
-  const { data, isLoading, refetch } = useQuery({
+  const { data, isLoading, refetch, error } = useQuery({
     queryKey: ['getTodo'],
     queryFn: getBoardList,
+    // initialData: posts,
   });
 
-  console.log('dd1', data);
+  console.log('main : ', data);
 
   return (
     <div>
       메인
       <button>post</button>
+      <TodoLIst data={data} />
     </div>
   )
 }
