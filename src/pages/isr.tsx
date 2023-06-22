@@ -8,7 +8,7 @@ type SsgType = {
 }
 
 const Isr = () => {
-  const { data } = useQuery(['posts'], getBoardList)
+  const { data } = useQuery(['todos'], getBoardList)
   return (
     <div>
       <h1>isr 페이지</h1>

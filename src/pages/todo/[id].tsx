@@ -4,85 +4,83 @@ import { useRouter } from 'next/router';
 import React from 'react'
 import { useQuery, QueryClient, dehydrate } from '@tanstack/react-query';
 import { GetStaticProps } from 'next';
+import { getTodoItem, getTodoList } from '../api';
 
-export async function getBoardList() {
-  const { data } = await axios.get(`${ROOT_API}/todos`);
-  return data;
+interface PostProps {
+  title: string;
+  content: string;
 }
 
-// export const getStaticProps = async ({ params: any }) => {
-//   try {
-//     const { data, error } = await axios.get(
-//       `https://jsonplaceholder.typicode.com/posts/${params.id}`
-//     );
 
-//     if (error || !data) {
-//       console.log(errors);
-//       return { notFound: true };
-//     }
 
-//     return {
-//       props: { post: data },
-//       revalidate: 10
-//     };
-//   } catch (err) {
-//     console.log(err);
-//     return { notFound: true };
-//   }
-//   const queryClient = new QueryClient();
+export async function getStaticPaths() {
+  const postIds = await getTodoList();
 
-//   await queryClient.prefetchQuery('todos', fetchUserData);
+  const paths = postIds.map((postId: any) => ({
+    params: { postId: postId.toString() },
+  }));
 
-//   return {
-//     props: {
-//       dehydratedState: dehydrate(queryClient),
-//     },
-//   };
-// };
-
-type TodoDetailPage = {
-  data?: any
+  return {
+    paths,
+    fallback: false,
+  };
 }
 
-const Index = ({ data }: TodoDetailPage) => {
+
+
+export async function getStaticProps({ params }: any) {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery(['todos'], getTodoList);
+  console.log('cc', queryClient);
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+    revalidate: 30,
+  };
+}
+
+
+const Index = () => {
   const router = useRouter();
   const { query } = router
+  const todoId = router.query.id as string;
+  console.log('dd111: ', todoId);
 
-  console.log('d', query.id, data);
+  const { data } = useQuery(['todo-item', todoId], () => getTodoItem(todoId));
+  console.log('id', data);
+
   return (
     <div>
-      <p>post slug : { }</p>
+      <p></p>
     </div>
   )
 }
 
 export default Index
 
+// export async function getStaticProps({ query:any }) {
+//   const postId = query.postId as string;
+//   const post = await getTodoItem(postId);
+
+//   return {
+//     props: {
+//       post,
+//     },
+//   };
+// }
 
 
+// export async function getStaticPaths() {
+//   const postIds = await getTodoList();
 
+//   const paths = postIds.map((postId: any) => ({
+//     params: { postId: postId.toString() },
+//   }));
 
-// export const getStaticPaths = async () => {
-//   try {
-//     const { data } = await axios.get(
-//       `https://jsonplaceholder.typicode.com/posts`
-//     );
-//     // console.log(data.slice(0, 5));
-//     const paths = data.map((post:any) => ({
-//       params: { id: post.id.toString() }
-//     }));
-
-//     if (!data) {
-//       // console.log(error);
-//       return { notFound: true };
-//     }
-
-//     return {
-//       paths,
-//       fallback: "blocking"
-//     };
-//   } catch (err) {
-//     console.log(err);
-//     return { notFound: true };
-//   }
-// };
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// }
