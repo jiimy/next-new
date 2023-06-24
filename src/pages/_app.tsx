@@ -13,9 +13,9 @@ import type { AppProps } from 'next/app';
 import { useState } from 'react';
 
 export default function App({ Component, pageProps, ...rest }: AppProps) {
-  // const dehydratedState = useDehydratedState()
+  const dehydratedState = useDehydratedState()
   const [queryClient] = useState(() => new QueryClient({
-    
+
     defaultOptions: {
       queries: {
         retry: 0,

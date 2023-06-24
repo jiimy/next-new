@@ -1,10 +1,6 @@
-import { ROOT_API } from '@/constants/api';
-import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
-import React from 'react'
-import { useQuery, QueryClient, dehydrate } from '@tanstack/react-query';
-import { GetStaticProps } from 'next';
-import { getTodoItem, getTodoList } from '../api';
+import { getTodoItem } from '../api';
 
 // interface PostProps {
 //   title: string;
@@ -43,10 +39,8 @@ const Index = () => {
   const router = useRouter();
   const { query } = router
   // const todoId = router.query.id as string;
-  console.log('dd111: ', query);
 
   const { data } = useQuery(['todo-item', query.id], () => getTodoItem(query.id));
-  console.log('id', data);
 
   return (
     <div>
