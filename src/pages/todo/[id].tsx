@@ -6,10 +6,10 @@ import { useQuery, QueryClient, dehydrate } from '@tanstack/react-query';
 import { GetStaticProps } from 'next';
 import { getTodoItem, getTodoList } from '../api';
 
-interface PostProps {
-  title: string;
-  content: string;
-}
+// interface PostProps {
+//   title: string;
+//   content: string;
+// }
 
 
 
@@ -42,10 +42,10 @@ interface PostProps {
 const Index = () => {
   const router = useRouter();
   const { query } = router
-  const todoId = router.query.id as string;
-  console.log('dd111: ', todoId);
+  // const todoId = router.query.id as string;
+  console.log('dd111: ', query);
 
-  const { data } = useQuery(['todo-item', todoId], () => getTodoItem(todoId));
+  const { data } = useQuery(['todo-item', query.id], () => getTodoItem(query.id));
   console.log('id', data);
 
   return (
