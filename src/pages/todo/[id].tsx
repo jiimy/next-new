@@ -14,28 +14,25 @@ interface PostProps {
 
 
 export async function getStaticPaths() {
-  const postIds = await getTodoList();
+  const { data: posts } = await axios.get('/api/posts');
 
-  const paths = postIds.map((postId: any) => ({
-    params: { postId: postId.toString() },
+  // 모든 글의 ID로 경로를 생성합니다.
+  const paths = posts.map((post: any) => ({
+    params: { id: post.id.toString() },
   }));
 
   return {
     paths,
-    fallback: false,
+    fallback: true, // fallback을 true로 설정하여 없는 경로로의 접근 시 404 페이지를 자동으로 생성하도록 합니다.
   };
 }
 
 
-
 export async function getStaticProps({ params }: any) {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery(['todos'], getTodoList);
-  console.log('cc', queryClient);
+  const { data: post } = await axios.get(`/api/posts/${params.id}`);
   return {
     props: {
-      dehydratedState: dehydrate(queryClient),
+      post
     },
     revalidate: 30,
   };
