@@ -50,34 +50,9 @@ const Index = () => {
 
   return (
     <div>
-      <p></p>
+      <p>{data.id}</p>
     </div>
   )
 }
 
 export default Index
-
-// export async function getStaticProps({ query:any }) {
-//   const postId = query.postId as string;
-//   const post = await getTodoItem(postId);
-
-//   return {
-//     props: {
-//       post,
-//     },
-//   };
-// }
-
-
-// export async function getStaticPaths() {
-//   const postIds = await getTodoList();
-
-//   const paths = postIds.map((postId: any) => ({
-//     params: { postId: postId.toString() },
-//   }));
-
-//   return {
-//     paths,
-//     fallback: false,
-//   };
-// }
