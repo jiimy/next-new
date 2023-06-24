@@ -14,7 +14,7 @@ interface PostProps {
 
 
 export async function getStaticPaths() {
-  const { data: posts } = await axios.get('/api/posts');
+  const { data: posts } = await axios.get(`${ROOT_API}/todos`);
 
   // 모든 글의 ID로 경로를 생성합니다.
   const paths = posts.map((post: any) => ({
@@ -29,7 +29,7 @@ export async function getStaticPaths() {
 
 
 export async function getStaticProps({ params }: any) {
-  const { data: post } = await axios.get(`/api/posts/${params.id}`);
+  const { data: post } = await axios.get(`${ROOT_API}/todos/${params.id}`);
   return {
     props: {
       post
