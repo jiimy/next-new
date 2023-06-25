@@ -9,6 +9,7 @@ const Main = () => {
     <div>
       메인
       <button>post</button>
+      <TodoList data={data} />
     </div>
   )
 }
