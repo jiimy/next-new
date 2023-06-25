@@ -1,8 +1,9 @@
 import TodoList from '@/components/todolist/TodoLIst';
 import { QueryClient, dehydrate, useQuery } from '@tanstack/react-query';
+import { getTodoList } from '../api';
 
 const Main = () => {
-  // const { data } = useQuery(['todos'], getTodoList)
+  const { data } = useQuery(['todos'], getTodoList)
 
   return (
     <div>
@@ -12,16 +13,16 @@ const Main = () => {
   )
 }
 
-// export async function getStaticProps() {
-//   const queryClient = new QueryClient();
+export async function getStaticProps() {
+  const queryClient = new QueryClient();
 
-//   await queryClient.prefetchQuery(['todos'], getTodoList);
-//   return {
-//     props: {
-//       dehydratedState: dehydrate(queryClient),
-//     },
-//     revalidate: 30,
-//   };
-// }
+  await queryClient.prefetchQuery(['todos'], getTodoList);
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+    revalidate: 30,
+  };
+}
 
 export default Main
