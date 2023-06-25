@@ -1,15 +1,13 @@
 import TodoList from '@/components/todolist/TodoLIst';
 import { QueryClient, dehydrate, useQuery } from '@tanstack/react-query';
-import { getTodoList } from '../api';
 
 const Main = () => {
-  const { data } = useQuery(['todos'], getTodoList)
+  // const { data } = useQuery(['todos'], getTodoList)
 
   return (
     <div>
       메인
       <button>post</button>
-      <TodoList data={data} />
     </div>
   )
 }
