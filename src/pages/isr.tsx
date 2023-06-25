@@ -1,25 +1,27 @@
-// import { ROOT_API } from '@/constants/api';
-// import { useQuery, QueryClient, dehydrate } from '@tanstack/react-query';
-// import axios from 'axios';
+import { ROOT_API } from '@/constants/api';
+import { useQuery, QueryClient, dehydrate } from '@tanstack/react-query';
+import axios from 'axios';
 
 
 // type SsgType = {
 //   data?: any
 // }
 
-// const Isr = () => {
-//   const { data } = useQuery(['todos'], getBoardList)
-//   return (
-//     <div>
-//       <h1>isr 페이지</h1>
-//       <div>
-//         {data.map((item: any, i: any) => (
-//           <div key={i}>{item.id} {item.title}</div>
-//         ))}
-//       </div>
-//     </div>
-//   )
-// }
+const Isr = () => {
+  // const { data } = useQuery(['todos'], getBoardList)
+  return (
+    <div>
+      <h1>isr 페이지</h1>
+      <div>
+        {
+        // data.map((item: any, i: any) => (
+        //   <div key={i}>{item.id} {item.title}</div>
+        // ))
+        }
+      </div>
+    </div>
+  )
+}
 
 // export async function getBoardList() {
 //   const { data } = await axios.get(`${ROOT_API}/todos`);
@@ -39,4 +41,4 @@
 //   };
 // }
 
-// export default Isr
+export default Isr
