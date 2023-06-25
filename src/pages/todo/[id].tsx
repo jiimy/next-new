@@ -40,11 +40,11 @@ const Index = () => {
   const { query } = router
   // const todoId = router.query.id as string;
 
-  const { data } = useQuery(['todo-item', query.id], () => getTodoItem(query.id));
+  // const { data } = useQuery(['todo-item', query.id], () => getTodoItem(query.id));
 
   return (
     <div>
-      <p>{data.id}</p>
+      테스트
     </div>
   )
 }
