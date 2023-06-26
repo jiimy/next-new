@@ -26,7 +26,8 @@ export async function getStaticPaths() {
 }
 
 
-export async function getStaticProps({ params }: any) {
+export async function getStaticProps({ params, paths }: any) {
+  console.log('getStaticProps', paths);
   const { data: todoItem } = await axios.get(`${ROOT_API}/todos/${params.id}`);
   return {
     props: {
