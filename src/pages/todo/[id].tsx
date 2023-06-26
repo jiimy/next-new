@@ -54,13 +54,13 @@ const Index = ({ todoItem, paths }: TodoItemProps) => {
   return (
     <div>
       테스트
-      {/* {todoItem && */}
-      <div>
-        <div>id: {todoItem.id}</div>
-        <div>title: {todoItem.ititle}</div>
-        <div>completed: {todoItem.completed}</div>
-      </div>
-      {/* } */}
+      {todoItem &&
+        <div>
+          <div>id: {todoItem.id}</div>
+          <div>title: {todoItem.ititle}</div>
+          <div>completed: {todoItem.completed}</div>
+        </div>
+      }
     </div >
   )
 }
