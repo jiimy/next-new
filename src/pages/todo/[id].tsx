@@ -50,7 +50,7 @@ const Index = ({ todoItem, paths }: TodoItemProps) => {
 
   console.log('todoItem', todoItem)
   console.log('paths', paths)
-
+// 
   return (
     <div>
       테스트
