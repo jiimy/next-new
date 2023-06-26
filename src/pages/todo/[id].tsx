@@ -50,7 +50,7 @@ const Index = ({ todoItem, paths }: TodoItemProps) => {
 
   console.log('todoItem', todoItem)
   console.log('paths', paths)
-// 
+  // 
   return (
     <div>
       테스트
@@ -58,10 +58,10 @@ const Index = ({ todoItem, paths }: TodoItemProps) => {
         <div>
           <div>id: {todoItem.id}</div>
           <div>title: {todoItem.title}</div>
-          <div>completed: {todoItem.completed}</div>
+          <div>completed: {todoItem.completed ? 'true' : 'false'}</div>
         </div>
       }
-    </div >
+    </div>
   )
 }
 
