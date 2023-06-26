@@ -4,10 +4,9 @@ import { getTodoItem } from '../api';
 import axios from 'axios';
 import { ROOT_API } from '@/constants/api';
 
-// interface PostProps {
-//   title: string;
-//   content: string;
-// }
+interface TodoItemProps {
+  todoItem: any;
+}
 
 
 
@@ -37,7 +36,7 @@ export async function getStaticProps({ params }: any) {
 }
 
 
-const Index = () => {
+const Index = ({ todoItem }: TodoItemProps) => {
   const router = useRouter();
   const { query } = router
   const todoId = router.query.id as string;
@@ -45,7 +44,7 @@ const Index = () => {
   console.log('query', query);
 
   const { data } = useQuery(['todo-item', todoId], () => getTodoItem(todoId));
-  console.log('data', data);
+  console.log('data', data, todoItem);
 
   return (
     <div>
