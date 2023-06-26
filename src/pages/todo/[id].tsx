@@ -14,7 +14,6 @@ interface TodoItemProps {
 export async function getStaticPaths() {
   const { data: posts } = await axios.get(`${ROOT_API}/todos`);
 
-  // 모든 글의 ID로 경로를 생성합니다.
   const paths = posts.map((post: any) => ({
     params: { id: post.id.toString() },
   }));
@@ -27,13 +26,13 @@ export async function getStaticPaths() {
 
 
 export async function getStaticProps({ params, paths }: any) {
-  console.log('getStaticProps', paths);
+  console.log('getStaticProps: ', paths);
   const { data: todoItem } = await axios.get(`${ROOT_API}/todos/${params.id}`);
   return {
     props: {
       todoItem
     },
-    revalidate: 30,
+    revalidate: 10,
   };
 }
 
@@ -43,17 +42,17 @@ const Index = ({ todoItem, paths }: TodoItemProps) => {
   const { query } = router
   const todoId = router.query.id as string;
 
-  console.log('query', query);
+  // console.log('query', query);
 
-  const { data } = useQuery(['todo-item', todoId], () => getTodoItem(todoId));
-  console.log('data', data);
+  // const { data } = useQuery(['todo-item', todoId], () => getTodoItem(todoId));
+  // console.log('data', data);
 
-  console.log('todoItem', todoItem)
-  console.log('paths', paths)
+  console.log('todoItem : ', todoItem)
+  console.log('paths : ', paths)
   // 
   return (
     <div>
-      테스트
+      테스트11
       {todoItem &&
         <div>
           <div>id: {todoItem.id}</div>
