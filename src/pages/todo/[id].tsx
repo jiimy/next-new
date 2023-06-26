@@ -6,7 +6,7 @@ import { ROOT_API } from '@/constants/api';
 
 interface TodoItemProps {
   todoItem: any;
-  params: any;
+  paths: any;
 }
 
 
@@ -37,7 +37,7 @@ export async function getStaticProps({ params }: any) {
 }
 
 
-const Index = ({ todoItem, params }: TodoItemProps) => {
+const Index = ({ todoItem, paths }: TodoItemProps) => {
   const router = useRouter();
   const { query } = router
   const todoId = router.query.id as string;
@@ -47,7 +47,7 @@ const Index = ({ todoItem, params }: TodoItemProps) => {
   const { data } = useQuery(['todo-item', todoId], () => getTodoItem(todoId));
   console.log('data', data);
   console.log('todoItem', todoItem)
-  console.log('params', params)
+  console.log('paths', paths)
 
   return (
     <div>
