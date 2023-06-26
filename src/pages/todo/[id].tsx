@@ -6,7 +6,6 @@ import { ROOT_API } from '@/constants/api';
 
 interface TodoItemProps {
   todoItem: any;
-  paths: any;
 }
 
 
@@ -25,9 +24,10 @@ export async function getStaticPaths() {
 }
 
 
-export async function getStaticProps({ params, paths }: any) {
-  console.log('getStaticProps: ', paths);
+export async function getStaticProps({ params }: any) {
+
   const { data: todoItem } = await axios.get(`${ROOT_API}/todos/${params.id}`);
+
   return {
     props: {
       todoItem
@@ -37,22 +37,12 @@ export async function getStaticProps({ params, paths }: any) {
 }
 
 
-const Index = ({ todoItem, paths }: TodoItemProps) => {
-  const router = useRouter();
-  const { query } = router
-  // const todoId = router.query.id as string;
-
-  // console.log('query', query);
-
-  // const { data } = useQuery(['todo-item', todoId], () => getTodoItem(todoId));
-  // console.log('data', data);
-
+const Index = ({ todoItem }: TodoItemProps) => {
   console.log('todoItem : ', todoItem)
-  console.log('paths : ', paths)
-  // 
+
   return (
     <div>
-      테스트11
+      테스트
       {todoItem &&
         <div>
           <div>id: {todoItem.id}</div>
