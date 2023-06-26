@@ -50,9 +50,11 @@ const Index = ({ todoItem }: TodoItemProps) => {
   return (
     <div>
       테스트
-      <div>id: {data.id}</div>
-      <div>title: {data.ititle}</div>
-      <div>completed: {data.completed}</div>
+      {data && <>
+        <div>id: {data.id}</div>
+        <div>title: {data.ititle}</div>
+        <div>completed: {data.completed}</div>
+      </>}
     </div>
   )
 }
