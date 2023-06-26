@@ -43,7 +43,8 @@ const Index = ({ todoItem }: TodoItemProps) => {
   return (
     <div>
       테스트
-      {todoItem &&
+      {
+        // todoItem &&
         <div>
           <div>id: {todoItem.id}</div>
           <div>title: {todoItem.title}</div>
