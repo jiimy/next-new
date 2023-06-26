@@ -1,7 +1,7 @@
 import { ROOT_API } from '@/constants/api';
-import { useQuery, QueryClient, dehydrate } from '@tanstack/react-query';
+import { QueryClient, dehydrate, useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { getTodoList } from './api';
+import TutorialService from './api';
 
 
 // type SsgType = {
@@ -9,13 +9,17 @@ import { getTodoList } from './api';
 // }
 
 const Isr = () => {
-  const { data } = useQuery(['todos'], getTodoList)
+  const { data } = useQuery({
+    queryKey: ['todos'],
+    queryFn: TutorialService.get,
+  });
+  
   return (
     <div>
       <h1>isr 페이지</h1>
       <div>
         {
-          data.map((item: any, i: any) => (
+          data && data.map((item: any, i: any) => (
             <div key={i}>{item.id} {item.title}</div>
           ))
         }
