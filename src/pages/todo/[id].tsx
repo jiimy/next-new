@@ -6,6 +6,7 @@ import { ROOT_API } from '@/constants/api';
 
 interface TodoItemProps {
   todoItem: any;
+  params: any;
 }
 
 
@@ -36,7 +37,7 @@ export async function getStaticProps({ params }: any) {
 }
 
 
-const Index = ({ todoItem }: TodoItemProps) => {
+const Index = ({ todoItem, params }: TodoItemProps) => {
   const router = useRouter();
   const { query } = router
   const todoId = router.query.id as string;
@@ -46,11 +47,16 @@ const Index = ({ todoItem }: TodoItemProps) => {
   const { data } = useQuery(['todo-item', todoId], () => getTodoItem(todoId));
   console.log('data', data);
   console.log('todoItem', todoItem)
+  console.log('params', params)
 
   return (
     <div>
       테스트
-      <div>id: {data && data.id}</div>
+      {data && <>
+        <div>id: {data.id}</div>
+      </>
+      }
+      {/* <div>id: {data && data.id}</div> */}
       {/* <div>title: {data.ititle}</div>
         <div>completed: {data.completed}</div> */}
     </div>
