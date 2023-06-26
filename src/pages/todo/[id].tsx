@@ -57,7 +57,7 @@ const Index = ({ todoItem, paths }: TodoItemProps) => {
       {todoItem &&
         <div>
           <div>id: {todoItem.id}</div>
-          <div>title: {todoItem.ititle}</div>
+          <div>title: {todoItem.title}</div>
           <div>completed: {todoItem.completed}</div>
         </div>
       }
