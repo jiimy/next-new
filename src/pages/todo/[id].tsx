@@ -1,6 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
-import { useRouter } from 'next/router';
-import { getTodoItem } from '../api';
 import axios from 'axios';
 import { ROOT_API } from '@/constants/api';
 
@@ -8,6 +5,25 @@ interface TodoItemProps {
   todoItem: any;
 }
 
+const Index = ({ todoItem }: TodoItemProps) => {
+  console.log('todoItem : ', todoItem)
+
+  return (
+    <div>
+      테스트
+      {
+        todoItem &&
+        <div>
+          <div>id: {todoItem.id}</div>
+          <div>title: {todoItem.title}</div>
+          <div>completed: {todoItem.completed ? 'true' : 'false'}</div>
+        </div>
+      }
+    </div>
+  )
+}
+
+export default Index
 
 
 export async function getStaticPaths() {
@@ -35,24 +51,3 @@ export async function getStaticProps({ params }: any) {
     revalidate: 10,
   };
 }
-
-
-const Index = ({ todoItem }: TodoItemProps) => {
-  console.log('todoItem : ', todoItem)
-
-  return (
-    <div>
-      테스트
-      {
-        // todoItem &&
-        <div>
-          <div>id: {todoItem.id}</div>
-          <div>title: {todoItem.title}</div>
-          <div>completed: {todoItem.completed ? 'true' : 'false'}</div>
-        </div>
-      }
-    </div>
-  )
-}
-
-export default Index

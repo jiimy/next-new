@@ -10,7 +10,7 @@ const TodoList = ({ data }: TodosType) => {
     <ul className="posts">
       {
         data && data.map((item: any, i: number) => (
-          <TodoItem data={data[i]} key={i}/>
+          <TodoItem data={data[i]} key={i} />
         ))
       }
     </ul>
