@@ -40,7 +40,7 @@ export async function getStaticProps({ params, paths }: any) {
 const Index = ({ todoItem, paths }: TodoItemProps) => {
   const router = useRouter();
   const { query } = router
-  const todoId = router.query.id as string;
+  // const todoId = router.query.id as string;
 
   // console.log('query', query);
 
