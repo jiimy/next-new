@@ -44,14 +44,15 @@ const Index = ({ todoItem }: TodoItemProps) => {
   console.log('query', query);
 
   const { data } = useQuery(['todo-item', todoId], () => getTodoItem(todoId));
-  console.log('data', data, todoItem);
+  console.log('data', data);
+  console.log('todoItem', todoItem)
 
   return (
     <div>
       테스트
-      <div>id: {todoItem.id}</div>
-      <div>title: {todoItem.ititle}</div>
-      <div>completed: {todoItem.completed}</div>
+      <div>id: {data.id}</div>
+      <div>title: {data.ititle}</div>
+      <div>completed: {data.completed}</div>
     </div>
   )
 }
