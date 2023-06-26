@@ -45,8 +45,8 @@ const Index = ({ todoItem, paths }: TodoItemProps) => {
 
   console.log('query', query);
 
-  // const { data } = useQuery(['todo-item', todoId], () => getTodoItem(todoId));
-  // console.log('data', data);
+  const { data } = useQuery(['todo-item', todoId], () => getTodoItem(todoId));
+  console.log('data', data);
 
   console.log('todoItem', todoItem)
   console.log('paths', paths)
@@ -54,13 +54,13 @@ const Index = ({ todoItem, paths }: TodoItemProps) => {
   return (
     <div>
       테스트
-      {todoItem &&
-        <div>
-          <div>id: {todoItem.id}</div>
-          <div>title: {todoItem.ititle}</div>
-          <div>completed: {todoItem.completed}</div>
-        </div>
-      }
+      {/* {todoItem && */}
+      <div>
+        <div>id: {todoItem.id}</div>
+        <div>title: {todoItem.ititle}</div>
+        <div>completed: {todoItem.completed}</div>
+      </div>
+      {/* } */}
     </div >
   )
 }
