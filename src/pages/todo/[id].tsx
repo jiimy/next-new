@@ -39,27 +39,27 @@ export async function getStaticProps({ params, paths }: any) {
 
 
 const Index = ({ todoItem, paths }: TodoItemProps) => {
-  const router = useRouter();
-  const { query } = router
-  const todoId = router.query.id as string;
+  // const router = useRouter();
+  // const { query } = router
+  // const todoId = router.query.id as string;
 
-  console.log('query', query);
+  // console.log('query', query);
 
-  const { data } = useQuery(['todo-item', todoId], () => getTodoItem(todoId));
-  console.log('data', data);
+  // const { data } = useQuery(['todo-item', todoId], () => getTodoItem(todoId));
+  // console.log('data', data);
   console.log('todoItem', todoItem)
   console.log('paths', paths)
 
   return (
     <div>
       테스트
-      {/* {todoItem &&
-      } */}
-      <div>
-        <div>id: {todoItem.id}</div>
-        <div>title: {todoItem.ititle}</div>
-        <div>completed: {todoItem.completed}</div>
-      </div>
+      {todoItem &&
+        <div>
+          <div>id: {todoItem.id}</div>
+          <div>title: {todoItem.ititle}</div>
+          <div>completed: {todoItem.completed}</div>
+        </div>
+      }
     </div >
   )
 }
