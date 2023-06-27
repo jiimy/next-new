@@ -32,7 +32,7 @@ const getTodoItem = async (id: any) => {
 };
 
 const create = async ({ title }: Tutorial) => {
-  const response = await apiClient.post<any>("/tutorials", { title });
+  const response = await apiClient.post<any>("/todos", { title });
   return response.data;
 };
 
