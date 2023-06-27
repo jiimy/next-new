@@ -16,7 +16,7 @@ const Main = () => {
   return (
     <div>
       메인
-      <TodoPost />
+      {/* <TodoPost /> */}
       <TodoList data={data} />
     </div>
   )
