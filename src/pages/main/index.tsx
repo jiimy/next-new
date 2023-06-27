@@ -1,7 +1,6 @@
 import TodoList from '@/components/todolist/TodoLIst';
 import { QueryClient, dehydrate, useQuery } from '@tanstack/react-query';
 import TutorialService from '../api';
-import TodoPost from '@/components/todopost/TodoPost';
 
 const Main = () => {
 
