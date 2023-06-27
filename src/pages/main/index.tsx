@@ -9,7 +9,9 @@ const Main = () => {
     queryKey: ['todos'],
     queryFn: TutorialService.get,
     keepPreviousData: true,
-    refetchOnWindowFocus: true,
+    // enabled: true,
+    staleTime: 50,
+    // refetchOnWindowFocus: true,
   });
 // dd
 

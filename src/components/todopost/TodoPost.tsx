@@ -21,6 +21,7 @@ const TodoPost = () => {
       onSuccess: (res) => {
         // setPostResult(fortmatResponse(res));
         console.log('res', res);
+        setText('');
       },
       onError: (err: any) => {
         // setPostResult(fortmatResponse(err.response?.data || err));
@@ -31,11 +32,11 @@ const TodoPost = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log('11');
     try {
       postTutorial();
     } catch (err) {
       // setPostResult(fortmatResponse(err));
+      console.log('err', err);
     }
   }
 

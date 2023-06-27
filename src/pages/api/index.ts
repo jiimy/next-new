@@ -36,10 +36,16 @@ const create = async ({ title }: Tutorial) => {
   return response.data;
 };
 
+const deleteById = async (id: any) => {
+  const response = await apiClient.delete<any>(`/todos/${id}`);
+  return response.data;
+}
+
 const TutorialService = {
   create,
   getTodoItem,
   get,
+  deleteById,
 };
 
 export default TutorialService;
