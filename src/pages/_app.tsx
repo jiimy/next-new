@@ -13,7 +13,7 @@ import type { AppProps } from 'next/app';
 import { useState } from 'react';
 
 export default function App({ Component, pageProps, ...rest }: AppProps) {
-  const [queryClient] = useState(() => new QueryClient({
+  const queryClient = new QueryClient({
 
     defaultOptions: {
       queries: {
@@ -24,7 +24,7 @@ export default function App({ Component, pageProps, ...rest }: AppProps) {
         refetchOnWindowFocus: false,
       },
     },
-  }));
+  });
   return <QueryClientProvider client={queryClient}>
     <Hydrate state={pageProps.dehydratedState}>
       <ReactQueryDevtools initialIsOpen={true} />

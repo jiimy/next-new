@@ -1,10 +1,11 @@
 import React from 'react'
 import { useState } from 'react';
-import { QueryClient, dehydrate, useQuery, useMutation } from '@tanstack/react-query';
+import { QueryClient, dehydrate, useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import TutorialService from '@/pages/api';
 
 const TodoPost = () => {
   const [text, setText] = useState('');
+  const queryClient = useQueryClient();
 
   const onchange = (e: any) => {
     setText(e.target.value);
@@ -20,6 +21,7 @@ const TodoPost = () => {
     {
       onSuccess: (res) => {
         // setPostResult(fortmatResponse(res));
+        queryClient.invalidateQueries(['todos']);
         console.log('res', res);
         setText('');
       },

@@ -1,25 +1,21 @@
+import dynamic from 'next/dynamic';
 import TodoList from '@/components/todolist/TodoLIst';
 import { QueryClient, dehydrate, useQuery } from '@tanstack/react-query';
 import TutorialService from '../api';
-import TodoPost from '@/components/todopost/TodoPost';
+// import TodoPost from '@/components/todopost/TodoPost';
+const TodoPost = dynamic(
+  () => import('@/components/todopost/TodoPost')
+)
+// const DynamicComponent4 = dynamic(() => import('../components/hello4'))
 
 const Main = () => {
-
-  const { data } = useQuery({
-    queryKey: ['todos'],
-    queryFn: TutorialService.get,
-    keepPreviousData: true,
-    // enabled: true,
-    staleTime: 50,
-    // refetchOnWindowFocus: true,
-  });
-// dd
 
   return (
     <div>
       메인
       <TodoPost />
-      <TodoList data={data} />
+      {/* <TodoList data={data} /> */}
+      <TodoList />
     </div>
   )
 }

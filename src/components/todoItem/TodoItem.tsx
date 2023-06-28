@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Link from 'next/link';
-import { useQuery, useMutation } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import s from './todoitem.module.scss';
 import TutorialService from '@/pages/api';
 
@@ -10,6 +10,7 @@ type TodoItemType = {
 
 const TodoItem = ({ data }: TodoItemType) => {
   const [deleteId, setDeleteId] = useState(data.id);
+  const queryClient = useQueryClient();
 
   const { isLoading: isDeletingTutorial, mutate: deleteTutorial } = useMutation<any, Error>(
     async () => {
@@ -18,6 +19,7 @@ const TodoItem = ({ data }: TodoItemType) => {
     {
       onSuccess: (res) => {
         // setDeleteResult(fortmatResponse(res));
+        queryClient.invalidateQueries(['todos']);
         console.log('res', res);
       },
       onError: (err: any) => {
