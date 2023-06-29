@@ -9,15 +9,16 @@ const apiClient = axios.create({
   },
 });
 
-type Tutorial = {
+type TodoState = {
   title: string;
+  completed?: boolean;
 };
 
 const get = async () => {
   // const { data } = await axios.get(`${ROOT_API}/todos`);
   // return data;
 
-  const response = await apiClient.get<Tutorial[]>("/todos");
+  const response = await apiClient.get<TodoState[]>("/todos");
   return response.data;
 };
 
@@ -27,11 +28,11 @@ const get = async () => {
 // }
 
 const getTodoItem = async (id: any) => {
-  const response = await apiClient.get<Tutorial>(`/todos/${id}`);
+  const response = await apiClient.get<TodoState>(`/todos/${id}`);
   return response.data;
 };
 
-const create = async ({ title }: Tutorial) => {
+const create = async ({ title }: TodoState) => {
   const response = await apiClient.post<any>("/todos", { title });
   return response.data;
 };
@@ -39,13 +40,19 @@ const create = async ({ title }: Tutorial) => {
 const deleteById = async (id: any) => {
   const response = await apiClient.delete<any>(`/todos/${id}`);
   return response.data;
-}
+};
+
+const update = async (id: any, { title, completed }: TodoState) => {
+  const response = await apiClient.put<any>(`/todos/${id}`, { title, completed });
+  return response.data;
+};
 
 const TutorialService = {
   create,
   getTodoItem,
   get,
   deleteById,
+  update
 };
 
 export default TutorialService;

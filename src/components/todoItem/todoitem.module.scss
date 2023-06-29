@@ -1,11 +1,23 @@
 .item {
+  display: flex;
+  align-items: center;
   position: relative;
-  width: 80%;
+  padding: 10px 0;
+  list-style: none;
+  border-bottom: 1px solid #ccc;
+  &:last-child {
+    border-bottom: none;
+  }
   &:hover {
     color: blue;
-    border-bottom: 1px solid black;
   }
-  button {
+  .input {
+    border: none;
+    &:hover {
+      border: 1px solid black;
+    }
+  }
+  .btn_wrap {
     position: absolute;
     right: 0;
     top: 0;
