@@ -17,9 +17,7 @@ const TodoList = () => {
     // enabled: true,
     refetchOnWindowFocus: true,
   });
-  // dd
 
-  console.log('data', data);
   return (
     <ul className={s.posts}>
       {

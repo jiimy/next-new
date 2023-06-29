@@ -35,7 +35,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: true, // fallback을 true로 설정하여 없는 경로로의 접근 시 404 페이지를 자동으로 생성하도록 합니다.
+    fallback: true,
   };
 }
 
@@ -48,6 +48,6 @@ export async function getStaticProps({ params }: any) {
     props: {
       todoItem
     },
-    revalidate: 10,
+    revalidate: 60,
   };
 }
