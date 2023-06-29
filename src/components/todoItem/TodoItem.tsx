@@ -9,6 +9,7 @@ type TodoItemType = {
 }
 
 const TodoItem = ({ data }: TodoItemType) => {
+  console.log('itemdata', data.id, data.completed);
   const queryClient = useQueryClient();
   const [dataId, setDataId] = useState(data.id);
   const [putTitle, setPutTitle] = useState(data.title);
@@ -85,9 +86,9 @@ const TodoItem = ({ data }: TodoItemType) => {
           onBlur={() => setToggle(false)}
           onFocus={() => setToggle(true)}
         />
-        <input type="checkbox" name="" id="" checked={chk}
+        <input type="checkbox" name="" id="" checked={data.completed}
           onChange={(e) => {
-            changeTodo(e, chk)
+            changeTodo(e, data.completed)
           }}
         />
       </div>

@@ -6,13 +6,13 @@ import TutorialService from '../api';
 const TodoPost = dynamic(
   () => import('@/components/todopost/TodoPost')
 )
+import s from './main.module.scss';
 // const DynamicComponent4 = dynamic(() => import('../components/hello4'))
 
 const Main = () => {
 
   return (
-    <div>
-      메인
+    <div className={s.main_page}>
       <TodoPost />
       {/* <TodoList data={data} /> */}
       <TodoList />

@@ -46,7 +46,7 @@ const TodoPost = () => {
     <div>
       <form onSubmit={(e) => handleSubmit(e)}>
         <input type="text" value={text} onChange={onchange} />
-        <button>post</button>
+        <button>추가</button>
       </form>
     </div>
   )
