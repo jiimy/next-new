@@ -18,8 +18,18 @@ const Url = () => {
           </Link>
         </li>
         <li>
-          <Link href="/todo">
-            투두 샘플
+          <Link href="/weather">
+            날씨 api
+          </Link>
+        </li>
+        <li>
+          <Link href="/recoil">
+            recoil test
+          </Link>
+        </li>
+        <li>
+          <Link href="/redux">
+            redux test
           </Link>
         </li>
       </ul>

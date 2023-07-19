@@ -8,6 +8,12 @@ const apiClient = axios.create({
     "Content-type": "application/json",
   },
 });
+const api = {
+  key: "55ee5df9f691b5fa1c36dcd225e43fd3",
+  base: "https://api.openweathermap.org/data/2.5/",
+};
+const city = "Seoul";
+const url = `${api.base}weather?q=${city}&appid=${api.key}`;
 
 type TodoState = {
   title: string;
@@ -17,8 +23,15 @@ type TodoState = {
 const get = async () => {
   // const { data } = await axios.get(`${ROOT_API}/todos`);
   // return data;
-
   const response = await apiClient.get<TodoState[]>("/todos");
+  return response.data;
+};
+
+
+const getWeather = async () => {
+  // const { data } = await axios.get(`${ROOT_API}/todos`);
+  // return data;
+  const response = await apiClient.get(url);
   return response.data;
 };
 
@@ -51,6 +64,7 @@ const TutorialService = {
   create,
   getTodoItem,
   get,
+  getWeather,
   deleteById,
   update
 };
