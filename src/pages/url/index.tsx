@@ -12,23 +12,23 @@ const Url = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ul>
-        <li>
-          <Link href="/todo">
+        <li >
+          <Link href="/todo" className='hover:text-red'>
             투두 샘플
           </Link>
         </li>
         <li>
-          <Link href="/weather">
+          <Link href="/weather" className='hover:text-red'>
             날씨 api
           </Link>
         </li>
         <li>
-          <Link href="/recoil">
+          <Link href="/recoil" className='hover:text-red'>
             recoil test
           </Link>
         </li>
         <li>
-          <Link href="/redux">
+          <Link href="/redux" className='hover:text-red'>
             redux test
           </Link>
         </li>

@@ -1,11 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    // tailwind를 사용할 경로들을 입력
-    "./pages/**/*.{js,jsx,ts,tsx}",
-    "./components/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    colors: {
+      red: '#ff0000',
+    },
     extend: {},
   },
   plugins: [],
