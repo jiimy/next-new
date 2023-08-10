@@ -30,6 +30,7 @@ export async function getStaticPaths() {
   const { data: posts } = await axios.get(`${ROOT_API}/todos`);
 
   const paths = posts.map((post: any) => ({
+    // NOTE: id validate zod yup이랑 비슷
     params: { id: post.id.toString() },
   }));
 
