@@ -12,12 +12,9 @@ export const counterSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
-    // increment: (state, action) => {
-    //   state.number += 1; // counter type의 number 키값
-    // },
     increment: (state: Counter, action) => {
-      // immer가 내장되어 있어서, 불변성 신경 쓰지 않고 바로 수정해주면 된다.
-      state.number += action.payload;
+      // state.number += action.payload;
+        state.number += 1; // counter type의 number 키값
     },
     decrement: (state, action) => {
       state.number -= 1;

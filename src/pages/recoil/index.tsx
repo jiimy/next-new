@@ -2,8 +2,8 @@ import { countState, doubledCountState } from '@/atom/Counter';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 const Recoil = () => {
-  const doubledCount = useRecoilValue(doubledCountState);
-  const [count, setCount] = useRecoilState(countState);
+  const doubledCount = useRecoilValue(doubledCountState); // 출력
+  const [count, setCount] = useRecoilState(countState); // 입력
 
   const increment = () => {
     setCount((prevCount) => prevCount + 1);

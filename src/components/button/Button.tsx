@@ -1,5 +1,3 @@
-import './button.module.scss';
-
 type buttonSizeType = {
   [key: string]: string;
 }
