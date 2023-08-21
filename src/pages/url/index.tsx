@@ -1,3 +1,4 @@
+import Button from '@/components/button/Button';
 import Head from 'next/head';
 import Link from 'next/link'
 
@@ -33,6 +34,7 @@ const Url = () => {
           </Link>
         </li>
       </ul>
+      {/* <Button theme='blue'>버튼</Button> */}
     </>
   )
 }
