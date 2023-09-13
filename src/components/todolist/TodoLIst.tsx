@@ -65,8 +65,6 @@ const TodoList = () => {
     }
   }, [tab, data])
 
-  console.log('dd', filteredData);
-
   return (
     <div>
       <nav>

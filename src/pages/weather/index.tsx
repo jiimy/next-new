@@ -10,7 +10,6 @@ const Weather = () => {
   });
 
   // const [weather, setWeather] = useState(data && data);
-  console.log('dta', data);
 
   const weatherIcon = (text: string) => {
     switch (text) {
