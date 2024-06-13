@@ -93,7 +93,7 @@ const TodoItem = ({ data }: TodoItemType) => {
         />
       </div>
       <div className={s.btn_wrap}>
-        <Link href={`/todo/${data.id}`}>
+        <Link href={`/todoDetail/${data.id}`}>
           링크 이동
         </Link>
         <button onClick={deleteDataById}>삭제</button>
