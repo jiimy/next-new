@@ -1,4 +1,3 @@
-import Button from '@/components/button/Button';
 import Head from 'next/head';
 import Link from 'next/link'
 
@@ -31,6 +30,11 @@ const Url = () => {
         <li>
           <Link href="/redux" className='hover:text-red'>
             redux test
+          </Link>
+        </li>
+        <li>
+          <Link href="/test" className='hover:text-red'>
+            test 컴포넌트 모음집
           </Link>
         </li>
       </ul>
