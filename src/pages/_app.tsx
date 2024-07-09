@@ -20,6 +20,7 @@ import { useDehydratedState } from 'use-dehydrated-state'
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { AppProps } from 'next/app';
 import { useState } from 'react';
+import '../styles/global.scss';
 
 export default function App({ Component, pageProps, ...rest }: AppProps) {
   const queryClient = new QueryClient({

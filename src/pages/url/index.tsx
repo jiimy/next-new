@@ -1,5 +1,8 @@
+'use client'
 import Head from 'next/head';
 import Link from 'next/link'
+import s from './test.module.scss';
+import { Button } from 'snow-white-ui';
 
 const Url = () => {
 
@@ -11,6 +14,7 @@ const Url = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Button theme='primary' size='small' className={s.btn}>버튼</Button>
       <ul>
         <li >
           <Link href="/todo" className='hover:text-red'>
@@ -38,6 +42,7 @@ const Url = () => {
           </Link>
         </li>
       </ul>
+
       {/* <Button theme='blue'>버튼</Button> */}
     </>
   )

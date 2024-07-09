@@ -1,11 +1,14 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import s from './button.module.scss';
+import './button.scss';
+import classNames from 'classnames';
 
 type StyledButtonType = {
   size?: 'small' | "medium";
   children: any;
-  theme?: 'primary' | 'secondry'
+  theme?: 'primary' | 'secondry',
+  className?: string;
 }
 
 const Button = styled.button<StyledButtonType>`
@@ -23,9 +26,9 @@ const Button = styled.button<StyledButtonType>`
   }
 `
 
-const StyledButton = ({ size = 'medium', children, theme = 'primary' }: StyledButtonType) => {
+const StyledButton = ({ size = 'medium', children, theme = 'primary', className }: StyledButtonType) => {
   return (
-    <Button size={size} className={s.button}>
+    <Button size={size} className={`${className} ${s.button} button`}>
       {children}
     </Button>
   );
