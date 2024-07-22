@@ -28,7 +28,7 @@
     "react-redux": "^8.1.1",
     "recoil": "^0.7.7",
     "redux": "^4.2.1",
-    "snow-white-ui": "^0.0.42",
+    "snow-white-ui": "^0.0.47",
     "styled-components": "^6.1.11",
     "typescript": "5.1.3",
     "use-dehydrated-state": "^0.1.0"

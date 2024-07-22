@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import s from './button.module.scss';
-import './button.scss';
 import classNames from 'classnames';
 
 type StyledButtonType = {
